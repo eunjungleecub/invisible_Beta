@@ -306,7 +306,7 @@ label {
             </div>
         </div>
     <!------------------------------------------------- for문 ----------------------------------------------------------->
-    {% for lec_name in lec_list %}
+    {% for lec in lec_list %}
         <div class="row" style="margin-bottom: 30px;">
             <div class="col-1">
             </div>
@@ -317,7 +317,7 @@ label {
                             <img class="download" src="{% static 'img/ebs.png' %}" style="width: 65px; height: 65px;">
                         </div>
                         <div class="col-9" style="padding-left:2rem;">
-                            <span class="lecture_title">{{ lec_name.results }}</span>
+                            <span class="lecture_title">{{lec.lecture_id}}</span>
                         </div>
                         <div class="col-2" style="text-align: right; padding-right: 30px;">
                             <img class="image" src="{% static 'unlike.png' %}" style="width: 45px; height: 45px; :overflow: visible;">
@@ -326,7 +326,7 @@ label {
                     <div class="row">
                         <div class="col-1"></div>
                         <div class="col-11 lecture_text" style="padding-left:2rem; margin-top:27px;">
-                            {{ lec_name.lectureteacher.teacher.teacher_name }} 선생님|총 {{ lec_name.lecture_totalnum }}강|수강기간 {% if post.lecture_day == None %} 0 {% else %} {{ lec_name.lecture_day }} {% endif %}일</div>
+                            ebs 선생님|총 999강|수강기간 {% if post.lecture_day == None %} 0 {% else %} {{ lec_name.lecture_day }} {% endif %}일</div>
                     </div>
                     <div class="row" style="justify-content: flex-end; margin-top: 15px;">
                         <div class="col-9"></div>

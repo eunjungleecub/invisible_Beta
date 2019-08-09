@@ -6,7 +6,6 @@ from invi_app.models import Book, Category, Feature, Lecture, Lecturecategory, L
 
 from django.db.models import Q
 
-
 # displaying category labels
 def category(request):
 
@@ -50,15 +49,16 @@ def select_lecture(request):
 
 # db table joining between; category labels - lectures
     lec_list=Lecturecategory.objects.extra(tables=['lectureCategory'], where=['lectureCategory.category_id=%s'%cate_id.get().category_id]).values('lecture_id')
-
+   
     for lec in lec_list:
-#        print(lec['lecture_id'])
-        lec_name=Lecture.objects.get(pk=lec['lecture_id'])
-
-        results=print(lec_name.lecture_title)
+        #print(lec['lecture_id'])
+        lec_name=Lecture.objects.filter(pk=lec['lecture_id'])
+        
+        #print(lec_names)
+        #results=lec_name.lecture_title
 
 #    print(cate_id.get().category_id)
-#    lecture_list = list(set(lecture_list))
+        #lecture_list = list(set(lecture_list))
 
     try:
         return render(request, 'category.html', {
@@ -73,11 +73,12 @@ def select_lecture(request):
             'cate3_list':cate3_list,
             'cate4_list':cate4_list,
             'cate5_list':cate5_list,
-            'lec_name':lec_name,
-            'results':results,
+            #'lec_names':lec_names,
+            #'results':results,
             })
+
     except ObjectDoesNotExist:
-        return render(request, 'category.html', {'cate1_list':cate1_list,'cate2_list':cate2_list,'cate3_list':cate3_list,'cate4_list':cate4_list,'cate5_list':cate5_list } )
+        return render(request, 'category.html', {'lec_name':lec_name, 'cate1_list':cate1_list,'cate2_list':cate2_list,'cate3_list':cate3_list,'cate4_list':cate4_list,'cate5_list':cate5_list } )
 
 
 #detail page for each lectures 

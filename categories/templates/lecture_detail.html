@@ -91,6 +91,50 @@ hr {
 .box {
 
 }
+.lecture_box {
+    height: 100%;
+    border: 1px solid black;
+    object-fit: contain;
+    opacity: 0.67;
+    border: solid 1px #cecece;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    }
+
+
+.lecture_title {
+    font-size: 25px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.4;
+    letter-spacing: -1.88px;
+    text-align: left;
+    color: #323232;
+}
+
+.lecture_text {
+    font-size: 15px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: -1.13px;
+    text-align: left;
+    color: #6e6e6e;
+}
+
+.lecture_price {
+    font-size: 35px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 0.57;
+    letter-spacing: -2.28px;
+    text-align: right;
+    color: #323232;
+}
 
 
 .lecture_box {
@@ -253,13 +297,67 @@ hr {
             </div>
         </div>
         <!-- for문 돌면서 같은 lecturefeature 강의들 box 표시 -->
-        <div class="row">
-            <div class="col-9 lecture_box">
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <div class="lecture_box"> {% comment %} OnClick="location.href ='{% url 'detail' pk=item.pk %}' style="cursor:pointer;" {% endcomment %}
+                    <div class="row" style="padding-top:1.2rem; height:37px; overflow: visible; ">
+                        <div class="col-1" style="padding-left:2rem; vertical-align:top;">
+                            <img class="download" src="{% static 'img/ebs.png' %}" style="width: 65px; height: 65px;">
+                        </div>
+                        <div class="col-9" style="padding-left:2rem;">
+                            <span class="lecture_title">[2020 기출의 미래] 영어독해</span>
+                        </div>
+                        <div class="col-2" style="text-align: right; padding-right: 30px;">
+                            <img class="image" src="{% static 'img/unlike.png' %}" style="width: 45px; height: 45px; :overflow: visible;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-11 lecture_text" style="padding-left:2rem; margin-top:27px;">
+                            오렌지, 박재혁, 이상미, 정승익 선생님|총 139강|수강기간 365일</div>
+                    </div>
+                    <div class="row" style="justify-content: flex-end; margin-top: 15px;">
+                        <div class="col-9"></div>
+                        <div class="col-3" style="text-align:right; margin-right: 30px; padding:0;"><span class="lecture_price" style="text-align: right;">{{ lec_name.lecture_price }}원</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>  
+        <!-- endfor -->
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-1">
+            </div>
+            <div class="col-10">
+                <div class="lecture_box"> {% comment %} OnClick="location.href ='{% url 'detail' pk=item.pk %}' style="cursor:pointer;" {% endcomment %}
+                    <div class="row" style="padding-top:1.2rem; height:37px; overflow: visible; ">
+                        <div class="col-1" style="padding-left:2rem; vertical-align:top;">
+                            <img class="download" src="{% static 'img/ebs.png' %}" style="width: 65px; height: 65px;">
+                        </div>
+                        <div class="col-9" style="padding-left:2rem;">
+                            <span class="lecture_title">{{ lec_name.lec_title }}</span>
+                        </div>
+                        <div class="col-2" style="text-align: right; padding-right: 30px;">
+                            <img class="image" src="{% static 'unlike.png' %}" style="width: 45px; height: 45px; :overflow: visible;">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-11 lecture_text" style="padding-left:2rem; margin-top:27px;">
+                            {{ lec_name.lectureteacher.teacher.teacher_name }} 선생님|총 {{ lec_name.lecture_totalnum }}강|수강기간 {% if post.lecture_day == None %} 0 {% else %} {{ lec_name.lecture_day }} {% endif %}일</div>
+                    </div>
+                    <div class="row" style="justify-content: flex-end; margin-top: 15px;">
+                        <div class="col-9"></div>
+                        <div class="col-3" style="text-align:right; margin-right: 30px; padding:0;"><span class="lecture_price" style="text-align: right;">{{ lec_name.lecture_price }}원</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1">
             </div>
         </div>
-    </div>
-        <!-- endfor -->
-
     <!-- end container box -->
     </div>
 <!-- return same -->
